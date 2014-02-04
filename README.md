@@ -6,7 +6,7 @@ The Project Euler Sprint is a site where one may find out the rules of the Proje
 
 ### In order of importance
 
-1. Display the rules
+1. <del>Display the rules</del>
 2. List Project Euler Sprint Meetups
 3. An organizer should be able to:
     - Create an event
