@@ -12,6 +12,8 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  gem 'launchy', '2.4.2'
+  gem 'database_cleaner', '1.2.0'
 end
 
 group :production do
@@ -19,7 +21,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'slim'
+gem 'slim', '2.0.2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
