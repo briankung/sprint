@@ -17,3 +17,12 @@
 
 # Ignore Mac OS temp file
 .DS_Store
+
+# Ignore other unnecessary files
+database.yml
+doc/
+*.swp
+*~
+.project
+.idea
+.secret

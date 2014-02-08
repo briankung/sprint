@@ -9,4 +9,22 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Sprint::Application.config.secret_key_base = '17f4d1fd42922a10d755bce018abc84b611978aa2a001c9ff00a14774ac0a5e24256e24bf7aa49a1d30449c196021c59613a74ad760f93e3f4e3b28aa4d9f7ca'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Sprint::Application.config.secret_key_base = secure_token
+
+# Stolen from The Rails Tutorial:
+# http://ruby.railstutorial.org/chapters/static-pages#code-secret_token
