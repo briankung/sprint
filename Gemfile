@@ -21,7 +21,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'slim', '2.0.2'
+gem 'slim-rails', '2.1.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
