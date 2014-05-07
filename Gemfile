@@ -11,7 +11,7 @@ group :development, :test do
   gem 'rspec-nc'
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'rb-fsevent'
 end
 
 group :test do
