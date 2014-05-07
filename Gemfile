@@ -8,6 +8,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'spring-commands-rspec'
+  gem 'rspec-nc'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
