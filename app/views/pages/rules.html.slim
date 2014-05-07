@@ -1,2 +1,6 @@
-h1 Pages#rules
-p Find me in app/views/pages/rules.html.slim
+/ Unsure if stupid or smart. Not even stupid enough to be brilliant.
+- uri = URI.parse 'https://gist.githubusercontent.com/briankung/8724819/raw/The%20Project%20Euler%20Sprint%20Rules.md'
+/ It would be nice to cache `contents`
+- contents = Net::HTTP.get(uri)
+- html = Tilt['md'].new { contents }
+== html.render

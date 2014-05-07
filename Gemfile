@@ -28,6 +28,7 @@ end
 
 gem 'slim-rails'
 gem 'sass-rails'
+gem 'kramdown', require: 'kramdown'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'uglifier'
 gem 'coffee-rails'
