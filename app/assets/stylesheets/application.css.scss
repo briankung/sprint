@@ -12,6 +12,9 @@
  *= require_tree .
  */
 
+@import "bootstrap";
+@import "bootstrap/theme";
+
 div.teaser {
 	font-family: cursive;
 	font-size: 10px;
