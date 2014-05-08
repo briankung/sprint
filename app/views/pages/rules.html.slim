@@ -1,6 +1,43 @@
-/ Unsure if stupid or smart. Not even stupid enough to be brilliant.
-- uri = URI.parse 'https://gist.githubusercontent.com/briankung/8724819/raw/The%20Project%20Euler%20Sprint%20Rules.md'
-/ It would be nice to cache `contents`
-- contents = Net::HTTP.get(uri)
-- html = Tilt['md'].new { contents }
-== html.render
+h1 The Project Euler Sprint Hack Nights
+
+p Project Euler Sprint Hack Nights are beginner friendly events where you can work on your own projects or engage in a friendly competition called the Project Euler Sprint.
+
+p The Project Euler Sprint is a friendly competition involving solving Project Euler (#{link_to 'http://projecteuler.net', 'http://projecteuler.net/problems'}) problems for points. Project Euler is a series of increasingly difficult computational math problems that must be solved with code (generally speaking - we've had some impressive solutions in pen and paper as well as on an Excel spreadsheet).
+
+p Each problem is harder than the last, so each problem is worth its problem number in points. Problem #1 is easy, so it's worth 1 point, while problem #50 is much harder, but worth 50 points. You can form teams of 4 people and solutions can be in any language as long as it's coded there. More detailed rules below.
+
+h2 Sprint Rules
+
+p The Project Euler Sprint is a competition in which teams complete computational math problems from Project Euler. Starting with problem #1, each successive problem is harder than the last. Consequently, each problem has a point value equal to its problem number. Points are tallied up at the end of the event and the team with the most points wins.
+
+ol
+	li Problems come from #{link_to 'Project Euler', 'http://projecteuler.net/problems'}
+	li Solutions are worth their problem number in points.
+	li Solutions must be coded at the event. <em>Mathematics libraries with methods for prime, factorial, fibonacci numbers, or other methods that make solving a particular problem trivial are not allowed. Those methods must be implemented by the team during the hack night.</em>
+	li Solutions may be in any language.
+	li Problems may be done in any order.
+	li You may practice ahead of time.
+	li Once a solution has been reached and <em>verified on #{link_to 'projecteuler.net', 'http://projecteuler.net/'},</em> it must be checked in* with an event organizer to count toward a team's point total.
+	li Teams may consist of up to four people.
+	li Participants are given 30 minutes at the beginning to meet, eat if any food has been provided, and form teams. They are then given 90 minutes to solve as many problems as they can.
+
+p * Check ins involve showing the code, running it to produce a solution, and showing that the solution is correct on the Project Euler site. This means there needs to be at least one person per team who has a #{link_to 'Project Euler', 'http://projecteuler.net/'} account (sign up #{link_to 'here', 'http://projecteuler.net/register'}).
+
+h2 Core Values
+
+ul
+	li Inclusiveness
+	li Fun
+	li Community
+
+p More to come soon!
+
+h2 Credits
+
+p The Project Euler Sprint was inspired by and takes its name from Project Euler:
+
+blockquote Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve.
+
+p The Project Euler Sprint is merely rules for a game played with problems on the Project Euler site.
+
+p Check out more at #{link_to 'projecteuler.net', 'http://projecteuler.net/'}!

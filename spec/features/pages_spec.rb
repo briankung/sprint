@@ -17,8 +17,7 @@ describe 'Pages' do
     it 'contains the Project Euler Sprint rules' do
       click_link 'Rules'
       expect(page).to have_css('h2', text: "Rules")
-      expect(page).to have_css('ol li')
-      expect(page).to have_css('li', minimum: 9)
+      expect(page).to have_css('ol li', minimum: 9)
     end
   end
 end
