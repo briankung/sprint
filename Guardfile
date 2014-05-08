@@ -16,6 +16,7 @@ guard :rspec, cmd: 'spring rspec' do
 
   # Capybara features specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }
+  watch(%r{^app/views/layouts/.*\.(erb|haml|slim)$})     { |m| "spec/features/" }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})

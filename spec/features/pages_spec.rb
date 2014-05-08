@@ -13,7 +13,6 @@ describe 'Pages' do
     click_link 'Meetups'
   end
 
-
   describe 'Rules' do
     it 'contains the Project Euler Sprint rules' do
       click_link 'Rules'
