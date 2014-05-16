@@ -15,3 +15,7 @@ The Project Euler Sprint is a site where one may find out the rules of the Proje
     - See total points per team
     - See teams listed in order of points
     - Mark an event as finished, at which point the event, team, and points should be made uneditable
+
+More may be found on the [issues tracker.][issues]
+
+[issues]: https://github.com/briankung/sprint/issues?state=open
