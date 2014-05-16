@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.1.1'
 #ruby-gemset=sprint
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 
 group :development, :test do
   gem 'sqlite3'
@@ -27,9 +27,9 @@ group :production do
 end
 
 gem 'slim-rails'
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.3' # Version number required for Rails 4.1.1
 gem 'kramdown', require: 'kramdown'
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
