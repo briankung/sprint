@@ -6,19 +6,22 @@ gem 'rails', '4.1.1'
 
 group :development, :test do
   gem 'sqlite3'
+end
 
+group :development do
   gem 'spring-commands-rspec'
   gem 'rspec-nc'
-  gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'rb-fsevent'
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'rake'
 end
 
 group :production do
