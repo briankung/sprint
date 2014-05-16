@@ -17,3 +17,6 @@
 
 # Ignore Mac OS temp file
 .DS_Store
+
+# Ignore .rspec configuration file
+.rspec
