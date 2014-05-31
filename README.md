@@ -19,3 +19,8 @@ The Project Euler Sprint is a site where one may find out the rules of the Proje
 More may be found on the [issues tracker.][issues]
 
 [issues]: https://github.com/briankung/sprint/issues?state=open
+
+#### Contributors
+
+- Brian Kung
+- Johnathan Hawthorne
