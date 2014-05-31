@@ -20,7 +20,7 @@ More may be found on the [issues tracker.][issues]
 
 [issues]: https://github.com/briankung/sprint/issues?state=open
 
-#### Contributors
+## Contributors
 
 - Brian Kung
 - Johnathan Hawthorne
