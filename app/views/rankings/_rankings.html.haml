@@ -1,0 +1,16 @@
+%div.rankings_container
+  - @boards.each do |board|
+    %div.ranking
+      %h2!= board[:title]
+      %p!= board[:description]
+      %table.board
+        %thead
+          %tr
+            %th= # blank for CSS tr::before counter
+            %th Team name
+            %th Score
+        %tbody
+          - board[:query].each do |row|
+            %tr
+              %td= "#{row.team.name} #{row.team.problems_solved}"
+              %td<= row.total

@@ -1,0 +1,11 @@
+%h1 #{@submission.team.name} / #{@submission.problem}
+%h2 Edit submission
+= render partial: 'form', object: @submission
+
+%h2 Delete submission
+= button_to 'Delete submission', submission_path(@submission), :method => :delete, :confirm => 'Are you sure?'
+
+%h2= link_to 'Edit team', team_path(@submission.team)
+%h2= link_to 'Submissions', submissions_path
+%h2= link_to 'Rankings', rankings_path
+

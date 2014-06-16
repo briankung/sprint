@@ -1,0 +1,19 @@
+%h1 #{@team.name}
+%h2 Edit team name
+=form_for @team do |f|
+ %table
+  %tr
+   %th Name
+   %td=f.text_field :name, {placeholder: 'New name'}
+  %tr
+   %th
+   %td=f.submit
+
+%h2 Delete team
+%h3 Deleting a team deletes all their submissions.
+%h4=@team.problems_solved
+= button_to "Delete team '#{@team.name}'", team_path(@team), :method => :delete, :confirm => 'Are you sure?'
+
+%h2= link_to 'Submissions', submissions_path
+%h2= link_to 'Rankings', rankings_path
+

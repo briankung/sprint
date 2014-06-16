@@ -1,0 +1,11 @@
+%table#solved_problems
+  %thead
+    %tr
+      %th Team name
+      %th Problem
+  %tbody
+    - @submissions.each do |submission|
+      %tr
+        %td= submission.team.name
+        %td= submission.problem
+        %td= link_to 'edit', submission_path(submission.id)

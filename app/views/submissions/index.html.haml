@@ -1,0 +1,14 @@
+%h1 Submissions
+
+%h2 New submission
+
+= render partial: 'form', object: :new_submission
+
+%h3= link_to 'Simple add interface', new_submission_path
+
+%h2 Solved problems
+
+= render 'all_submissions'
+
+%h2= link_to 'Rankings', rankings_path
+%h2= link_to 'Teams', teams_path
