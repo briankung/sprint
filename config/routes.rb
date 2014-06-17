@@ -5,6 +5,5 @@ Sprint::Application.routes.draw do
   get '/rules', to: 'pages#rules'
   get '/meetups', to: 'pages#meetups'
   get '/rankings', to: 'rankings#index'
-  get '/check', to: 'problems#check', as: :check
   match '/submissions/new', to: 'submissions#create', via: :post
 end
