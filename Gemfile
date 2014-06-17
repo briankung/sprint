@@ -39,6 +39,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'haml'
+gem 'devise'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
