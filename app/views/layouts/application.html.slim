@@ -36,8 +36,7 @@ html lang="en"
                     = link_to "Submissions", submissions_path
                   li
                     = link_to "Teams", teams_path
-                  li
-                    = link_to "Sign out", destroy_admin_session_path, method: :delete, confirm: 'Are you sure you want to sign out?'
+
       - if flash[:notice]
         .notice
           = "NOTICE: #{flash[:notice]}"
@@ -51,7 +50,12 @@ html lang="en"
       .container
         .teaser.col-md-4
           p 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...
-        .license.col-md-4.col-md-offset-4
+        .col-md-4
+          - if admin_signed_in?
+            = link_to "Sign out", destroy_admin_session_path, method: :delete, confirm: 'Are you sure you want to sign out?'
+          - else
+            = link_to "Admin sign in", new_admin_session_path
+        .license.col-md-4
           a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US" rel="license" 
             img alt=("Creative Commons License") src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" style="border-width:0" /
           br/
