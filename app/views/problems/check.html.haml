@@ -1,0 +1,7 @@
+%div{class: @correctness}
+  = @message
+
+%form{action: check_path, method: :get}
+  %input{name: "number", placeholder: "Problem number"}
+  %input{name: "solution", placeholder: "Solution"}
+  %input{type: "submit", value: "Check"}

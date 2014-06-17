@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606065822) do
+ActiveRecord::Schema.define(version: 20140616151523) do
+
+  create_table "problems", force: true do |t|
+    t.integer "number"
+    t.text    "solution"
+  end
 
   create_table "submissions", force: true do |t|
     t.integer "team_id"
