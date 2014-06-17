@@ -3,11 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .correct {
-  font-size: xx-large;
+  font-size: x-large;
   color: green;
 }
 
 .incorrect {
-  font-size: xx-large;
+  font-size: x-large;
   color: red;
+}
+
+.problem-name, .problem-number {
+  font-size: x-large;
+  font-weight: bold;
 }

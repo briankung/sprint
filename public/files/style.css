@@ -1,0 +1,80 @@
+body {
+	font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+	margin:0px;
+	padding:0px;
+}
+.problem-number {
+	background-color:#2d2d2d;
+	padding:5px;
+	font-weight:bold;
+	color:white;
+	margin-bottom:0px;
+	text-decoration:none;
+	display:block;
+}
+.problem-name {
+	background-color: orange;
+	padding:5px;
+	font-weight: bold;
+	letter-spacing:2px;
+	text-transform: capitalize;
+}
+.problem-content {
+	border:1px solid #F3E5AB;
+	padding:5px;
+	page-break-inside: avoid;
+}
+#toc {
+	min-height:20px;
+}
+#toc h1 {
+	margin:0px;
+	padding:5px;
+	font-size:12;
+	background-color:black;
+	color:white;
+	text-align:center;
+	cursor:pointer;
+}
+.toc-item {
+	display:block;
+	text-decoration:none;
+	padding:5px;
+	padding-left:10px;
+	padding-right:0px;
+	font-size:14;
+	font-family:'Courier New';
+	letter-spacing:2px;
+	background-color:#efefef;
+	color:black;
+	page-break-inside: avoid;
+}
+.toc-item:nth-child(even) {
+	background-color:#fefefe;
+}
+.toc-item:hover {
+	color:orange;
+	background-color:black;
+}
+.toc-inum {
+	float:right;
+	font-weight:bold;
+}
+#dl {
+	margin-left: 10px;
+	color: orange;
+}
+@media print {
+	body {
+		margin: 25mm;
+		margin-left:35mm; /*for binder rings*/
+		margin-right:35mm; /*for binder rings*/
+	}
+	.print-spacer {
+		page-break-before: always;
+		height:25mm;
+	}
+	.print-hidden {
+		display: none;
+	}
+}

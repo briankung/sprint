@@ -1,0 +1,8 @@
+= render partial: "problems/all_problems/p_#{params[:id]}"
+
+%div{class: @correctness}
+  = @message
+
+%form{action: problem_path(params[:id]), method: :get}
+  %input{name: "solution", placeholder: "Solution"}
+  %input{type: "submit", value: "Check"}
