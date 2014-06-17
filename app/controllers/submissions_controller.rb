@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @submission = Submission.find params[:id]
     redirect_to edit_submission_path @submission
@@ -9,7 +10,6 @@ class SubmissionsController < ApplicationController
   end
   
   def new
-    # default
   end
   
   def create
