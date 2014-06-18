@@ -6,3 +6,5 @@
 %form{action: problem_path(params[:id]), method: :get}
   %input{name: "solution", placeholder: "Solution"}
   %input{type: "submit", value: "Check"}
+
+= render partial: "attribution"
