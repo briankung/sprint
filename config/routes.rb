@@ -1,5 +1,5 @@
 Sprint::Application.routes.draw do
-  devise_for :admins
+  devise_for :admins, skip: :registrations
   resources :teams, :submissions, :rankings, :problems
   root to: 'pages#rules'
   get '/rules', to: 'pages#rules'
