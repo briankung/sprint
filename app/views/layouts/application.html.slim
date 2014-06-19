@@ -38,6 +38,8 @@ html lang="en"
                     = link_to "Submissions", submissions_path
                   li
                     = link_to "Teams", teams_path
+                  li
+                    = link_to "Sign out (#{current_admin.email})", destroy_admin_session_path, {method: :delete, data: {confirm: 'Are you sure you want to sign out?'}}
 
       - if flash[:notice]
         .notice
@@ -54,7 +56,7 @@ html lang="en"
           p 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...
         .col-md-4
           - if admin_signed_in?
-            = link_to "Sign out", destroy_admin_session_path, method: :delete, confirm: 'Are you sure you want to sign out?'
+            = link_to "Sign out (#{current_admin.email})", destroy_admin_session_path, {method: :delete, data: {confirm: 'Are you sure you want to sign out?'}}
           - else
             = link_to "Admin sign in", new_admin_session_path
         .license.col-md-4
