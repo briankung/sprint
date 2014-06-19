@@ -1,9 +1,9 @@
 %div.rankings_container
   - @boards.each do |board|
-    %div.ranking
+    %div.rankings.col-md-4
       %h2!= board[:title]
       %p!= board[:description]
-      %table.board
+      %table
         %thead
           %tr
             %th= # blank for CSS tr::before counter
