@@ -33,7 +33,7 @@ class Submission < ActiveRecord::Base
       },
       {
         title: 
-          "<i>&pi;</i>",
+          "&pi;",
         description:
             "Some problems &ge; 100",
         query:
