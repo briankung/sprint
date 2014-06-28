@@ -15,3 +15,6 @@
             %tr
               %td= "#{row.team.name} #{row.team.problems_solved}"
               %td<= row.total
+  - if @countdown
+    %h1.countdown.col-md-12
+      = @countdown

@@ -4,6 +4,8 @@ html lang="en"
     title The Project Euler Sprint
     meta charset="UTF-8" /
     meta content="width=device-width, initial-scale=1" name="viewport" /
+    - if @refresh
+      meta http-equiv="refresh" content="#{@refresh}"
 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
