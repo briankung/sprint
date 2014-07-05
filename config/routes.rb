@@ -1,4 +1,6 @@
 Sprint::Application.routes.draw do
+  resources :events
+
   devise_for :admins, skip: :registrations
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
