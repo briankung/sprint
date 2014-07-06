@@ -10,15 +10,36 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event  = Event.find(params[:id])
+    @boards = @event.divisions
+    if params.has_key? :refresh
+      if params[:refresh].to_i > 0
+        @refresh = params[:refresh].to_i
+      else
+        @refresh = 60
+      end
+    end
+    if params.has_key? :countdown
+      require 'time'
+      diff = Time.parse(params[:countdown]) - Time.now
+      if diff > 0
+        h_m = Time.at(diff).gmtime.strftime("%H:%M")
+        @countdown = "#{h_m} remaining"
+      else
+        @countdown = "Time has expired!"
+      end
+    end
   end
 
   # GET /events/new
   def new
+    authenticate_admin!
     @event = Event.new
   end
 
   # GET /events/1/edit
   def edit
+    authenticate_admin!
   end
 
   # POST /events

@@ -1,0 +1,20 @@
+%div.rankings_container
+  %h1= @event.name
+  - @boards.each do |board|
+    %div.rankings.col-md-4
+      %h2!= board[:title]
+      %p!= board[:description]
+      %table
+        %thead
+          %tr
+            %th= # blank for CSS tr::before counter
+            %th Team name
+            %th Score
+        %tbody
+          - board[:teams].each do |row|
+            %tr
+              %td= "#{row[:name]} #{row[:problems]}"
+              %td<= row[:total]
+  - if @countdown
+    %h1.countdown.col-md-12
+      = @countdown

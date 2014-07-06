@@ -1,5 +1,6 @@
 class Team < ActiveRecord::Base
   validates :name, uniqueness: true
+  belongs_to :event
   has_many :submissions
 
   #attr_accessible :id, :name
