@@ -10,6 +10,7 @@
     = f.label :name
     = f.text_field :name
   .field
+    h3 "Finalized" events cannot be edited or unfinalized.
     = f.label :finalized
-    = f.check_box :finalized
+    = f.check_box :finalized, onclick: "alert('Are you sure? Finalization is final and cannot be undone through the web interface.');"
   .actions = f.submit 'Save'

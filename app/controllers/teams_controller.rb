@@ -1,21 +1,17 @@
 class TeamsController < ApplicationController
   before_action :authenticate_admin!
+  def index
+    @teams = Team.all
+  end
+
   def show
     @team = Team.find params[:id]
     redirect_to edit_team_path @team
   end
   
-  def index
-    @teams = Team.all
-  end
-
-  def new
-  end  
-
   def create
     @team = Team.create!(team_params)
-    flash[:notice] = "#{@team.name} has been added."
-    redirect_to teams_path
+    redirect_to manage_event_path(@team.event_id)
   end
 
   def edit
@@ -33,11 +29,6 @@ class TeamsController < ApplicationController
   
   def destroy
     @team = Team.find(params[:id])
-
-    Submission.where(team_id: @team).each do |s|
-      s.destroy
-    end
-    
     name = @team.name
     if @team.destroy and 
       flash[:notice] = "Team #{name} has been deleted."
@@ -46,8 +37,9 @@ class TeamsController < ApplicationController
     end
     redirect_to teams_path
   end
+
   private
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :event_id)
   end
 end

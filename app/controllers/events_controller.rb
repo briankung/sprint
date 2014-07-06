@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order("id DESC")
   end
 
   # GET /events/1
@@ -40,6 +40,23 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     authenticate_admin!
+    @event = Event.find(params[:id])
+    if @event.finalized
+      flash[:notice] = "This event has been finalized"
+      redirect_to event_path(@event)
+    end
+  end
+
+  def manage
+    authenticate_admin!
+    @event = Event.find(params[:id])
+    if @event.finalized
+      flash[:notice] = "This event has been finalized"
+      redirect_to event_path(@event)
+    else
+      @teams = @event.teams
+      @submissions = @event.submissions
+    end
   end
 
   # POST /events

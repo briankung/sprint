@@ -1,26 +1,22 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_admin!
+  def index
+    @submissions = Submission.all
+  end
+
   def show
     @submission = Submission.find params[:id]
     redirect_to edit_submission_path @submission
   end
 
-  def index
-    @submissions = Submission.all
-  end
-  
-  def new
-  end
-  
   def create
-    team = Team.find_by_id(params[:new_submission][:team])
-    problem = params[:new_submission][:problem]
+    team = Team.find_by_id(params[:submission][:team])
+    problem = params[:submission][:problem]
     @submission = Submission.create!({team: team, problem: problem})
-    flash[:notice] = "Submission #{@submission.team.name}/#{@submission.problem} has been added."
     if URI(request.referer).path == new_submission_path
       redirect_to new_submission_path
     else
-      redirect_to submissions_path
+      redirect_to manage_event_path(team.event_id)
     end
   end
   
@@ -42,12 +38,13 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission = Submission.find(params[:id])
     name = @submission.team.name
+    event_id = @submission.team.event_id
     problem = @submission.problem
     if @submission.destroy
       flash[:notice] = "Submission #{name}/#{problem} has been deleted."
     else
       flash[:notice] = "Submission #{name}/#{problem} WAS NOT DELETED!"
     end
-    redirect_to submissions_path
+    redirect_to manage_event_path(event_id)
   end
 end

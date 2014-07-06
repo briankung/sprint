@@ -1,6 +1,18 @@
 class Event < ActiveRecord::Base
-  has_many :teams
+  has_many :teams, :dependent => :destroy
   has_many :submissions, :through => :teams
+
+  def teams
+    Team.select(:id, :name).
+    where("event_id = ?", self.id).
+    order("name ASC")
+  end
+
+  def submissions
+    Submission.joins(:team).
+    where("event_id = ?", self.id).
+    order("problem ASC")
+  end
 
   def divisions
     divisions =
@@ -25,24 +37,25 @@ class Event < ActiveRecord::Base
       }
     ]
     
-    teams = {}
-    Team.select(:id, :name).
-    where("event_id = ?", self.id).
-    each do |team|
-      teams[team.id] = {name: team.name, problems: []}
+    team_records = {}
+    teams.each do |team|
+      team_records[team.id] = {name: team.name, problems: [], total: 0}
     end
-    submissions = Submission.joins(:team).
-    where("event_id = ?", self.id).
-    each do |submission|
-      teams[submission.team_id][:problems] << submission.problem
+    submissions.each do |submission|
+      team_records[submission.team_id][:problems] << submission.problem
     end
-    teams.each do |team_id, team_record|
+    team_records.each do |team_id, team_record|
       max = team_record[:problems].max
       team_record[:total] = team_record[:problems].sum
       divisions.each do |division|
         if division[:range].include?(max)
           division[:teams] << team_record
         end
+      end
+    end
+    divisions.each do |division|
+      division[:teams].sort! do |a, b|
+        b[:total] <=> a[:total]
       end
     end
     return divisions

@@ -1,0 +1,10 @@
+<h1><%= link_to @event.name, edit_event_path(@event.id) %></h1>
+<table>
+<% @teams.each do |team| %>
+<tr>
+<td><%= link_to team.name, edit_team_path(team.id) %></td>
+<td align="right"><%= form_for :submission, :url => submissions_path do %>[<% @submissions.each do |submission| if submission.team_id == team.id %><%= link_to submission.problem, edit_submission_path(submission.id) %>, <% end; end %><input name="submission[team]" type="hidden" value="<%= team.id %>"><input name="submission[problem]" size="3">]<% end %></td>
+</tr>
+<% end %>
+<tr><td><%= form_for :team, :url => teams_path do %><input name="team[event_id]" type="hidden" value="<%= @event.id %>"><input name="team[name]" placeholder="New team"><% end %></td></tr>
+</table>

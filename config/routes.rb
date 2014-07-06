@@ -1,13 +1,12 @@
 Sprint::Application.routes.draw do
-  resources :events
-
+  root to: 'pages#fivek'
   devise_for :admins, skip: :registrations
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     patch 'admins/:id' => 'devise/registrations#update', :as => 'admin_registration'
   end
-  resources :teams, :submissions, :rankings, :problems
-  root to: 'pages#fivek'
+  resources :teams, :submissions, :rankings, :problems, :events
+  get 'events/:id/manage', to: 'events#manage', :as => 'manage_event'
   get '/rules', to: 'pages#rules'
   get '/meetups', to: 'pages#meetups'
   get '/rankings', to: 'rankings#index'
