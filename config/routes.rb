@@ -1,5 +1,5 @@
 Sprint::Application.routes.draw do
-  root to: 'pages#fivek'
+  root to: 'pages#home'
 
   get '/rules', to: 'pages#rules'
 
