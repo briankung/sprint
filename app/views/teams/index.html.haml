@@ -1,7 +1,0 @@
-%h1 Teams
-%ul
-  - @teams.each do |team|
-    %li
-      = Event.find_by_id(team.event_id).name
-      = link_to team.name, team_path(team)
-      = team.problems_solved

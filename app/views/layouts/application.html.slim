@@ -25,12 +25,13 @@ html lang="en"
             / Collect the nav links, forms, and other content for toggling
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
               ul.nav.navbar-nav
-                li
-                  = link_to "Rules", '/rules'
-                li
-                  = link_to "Events", events_path
-                li
-                  = link_to "Problems", problems_path
+                li= link_to "Rules", '/rules'
+                li= link_to "Problems", problems_path
+                li= link_to "Events", events_path
+                - if session[:event_id]
+                  li= link_to "Rankings", event_path(session[:event_id])
+                  - if admin_signed_in?
+                    li= link_to "Manage event", manage_event_path(session[:event_id])
 
       - if flash[:notice]
         .notice

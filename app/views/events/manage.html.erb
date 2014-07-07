@@ -1,10 +1,76 @@
+<% if flash[:edit] == :event %>
+  <%= form_for @event, method: :patch do |f| %>
+    <%= f.text_field :name, value: @event.name, placeholder: 'Type "delete" to delete entire event', size: 40, style: 'font-size: xx-large; height: 2em;', id: 'edit' %>
+  <% end %>
+<% else %>
 <h1><%= link_to @event.name, edit_event_path(@event.id) %></h1>
+<% end %>
 <table>
+<tbody>
 <% @teams.each do |team| %>
 <tr>
-<td><%= link_to team.name, edit_team_path(team.id) %></td>
-<td align="right"><%= form_for :submission, :url => submissions_path do %>[<% @submissions.each do |submission| if submission.team_id == team.id %><%= link_to submission.problem, edit_submission_path(submission.id) %>, <% end; end %><input name="submission[team]" type="hidden" value="<%= team.id %>"><input name="submission[problem]" size="3">]<% end %></td>
+<td>
+<% if flash[:edit] == :team && flash[:team_id] == team.id %>
+  <%= form_for team, method: :patch do |f| %>
+    <%= f.text_field :name, value: team.name, placeholder: 'Type "delete" to delete team', size: 30, id: 'edit' %>
+  <% end %>
+<% else %>
+<%= link_to team.name, edit_team_path(team.id) %>
+<% end %>
+</td>
+<td align="right">
+[<%
+  @submissions.each do |submission|
+    if submission.team_id == team.id
+      if flash[:edit] == :submission && flash[:submission_id] == submission.id 
+        %><%=
+        form_for submission, method: :patch do |f|
+          %><%=
+          f.text_field :problem, size: 2, value: submission.problem, id: 'edit'
+          %><%
+        end
+      else
+        %><%=
+        link_to submission.problem, edit_submission_path(submission.id)
+        %><%
+      end
+      %>, <%
+    end
+  end
+%><%=
+  form_for(:submission, url: submissions_path) do |f|
+  %><%=
+    f.hidden_field :team, value: team.id
+  %><%=
+    f.text_field :problem, size: 2
+  %><%
+  end
+%>]
+</td>
 </tr>
 <% end %>
-<tr><td><%= form_for :team, :url => teams_path do %><input name="team[event_id]" type="hidden" value="<%= @event.id %>"><input name="team[name]" placeholder="New team"><% end %></td></tr>
+</tbody>
+<tfoot>
+<tr><td>
+<%=
+  form_for :team, :url => teams_path do |f|
+    %><%=
+    f.hidden_field :event_id, value: @event.id
+    %><%=
+    f.text_field :name, placeholder: 'New team', size: 30
+    %><%
+  end
+%>
+</td>
+<td></td>
+</tr>
+</tfoot>
 </table>
+<p>
+Notes. Each field belongs to its own form. Press 'enter' to submit it. Click on a text element (event name, team name, problem number) to edit it. Submitting the string "delete" will delete the event, team or submission. Submitting an empty string will also delete a submission.
+</p>
+<% if flash[:edit] %>
+<script>
+document.getElementById('edit').select();
+</script>
+<% end %>

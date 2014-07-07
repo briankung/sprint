@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
         teams: []
       },
       {
-        title: "<i>e</i>",
+        title: "<i>i</i>",
         description: "Some problems between 21 and 99",
         range: 21..99,
         teams: []

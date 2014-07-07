@@ -1,4 +1,7 @@
 class ProblemsController < ApplicationController
+  def index
+  end
+
   def show
     problem_number = params[:id]
     candidate_solution = params[:solution]

@@ -1,0 +1,10 @@
+<h1>Project Euler Sprints</h1>
+<h2>Sign up and RSVP at <a href="http://www.meetup.com/Project-Euler-Sprint">http://www.meetup.com/Project-Euler-Sprint</a></h2>
+<ul>
+<% if admin_signed_in? %>
+  <li><%= link_to '<Admin: New Event>', new_event_path %></li>
+<% end %>
+<% @events.each do |event| %>
+  <li><%= link_to event.name, event_path(event) %></li>
+<% end %>
+</ul>
