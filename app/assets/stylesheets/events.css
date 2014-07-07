@@ -1,19 +1,19 @@
-form {
+.event form {
   display: inline-block;
 }
 
-a:link, a:visited {
+.event a:link, a:visited {
   color: black;
   text-decoration: none;
 }
 
-a:hover, a:active {
+.event a:hover, a:active {
   color: white;
   background: black;
   text-decoration: none;
 }
 
 
-tbody tr:hover {
+.event tbody tr:hover {
   background: #eee;
 }

@@ -1,3 +1,4 @@
+<div class="event">
 <% if flash[:edit] == :event %>
   <%= form_for @event, method: :patch do |f| %>
     <%= f.text_field :name, value: @event.name, placeholder: 'Type "delete" to delete entire event', size: 40, style: 'font-size: xx-large; height: 2em;', id: 'edit' %>
@@ -67,10 +68,11 @@
 </tfoot>
 </table>
 <p>
-Notes. Each field belongs to its own form. Press 'enter' to submit it. Click on a text element (event name, team name, problem number) to edit it. Submitting the string "delete" will delete the event, team or submission. Submitting an empty string will also delete a submission.
+<i>Notes. Each field belongs to its own form. Press 'enter' to submit it. Click on a text element (event name, team name, problem number) to edit it. Submitting the string "delete" will delete the event, team or submission. Submitting an empty string will delete a submission but not the event or team.</i>
 </p>
 <% if flash[:edit] %>
 <script>
 document.getElementById('edit').select();
 </script>
 <% end %>
+</div>
