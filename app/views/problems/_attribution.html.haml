@@ -4,5 +4,7 @@
     =link_to "Project Euler", "https://projecteuler.net/"
     and are licensed under
     =link_to "CC BY-NC-SA 2.0 UK", "http://creativecommons.org/licenses/by-nc-sa/2.0/uk/"
-    - if params[:number]
-      =link_to "[Authoritative location]", "http://projecteuler.net/problem=#{params[:number]}"
+- if params[:number]
+  %p
+    %strong
+      =link_to "http://projecteuler.net/problem=#{params[:number]}", "http://projecteuler.net/problem=#{params[:number]}"
