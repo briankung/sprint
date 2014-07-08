@@ -17,9 +17,11 @@ class EventsController < ApplicationController
     if params.has_key? :countdown
       require 'time'
       diff = Time.parse(params[:countdown]) - Time.now
-      if diff > 0
+      if diff > 60
         h_m = Time.at(diff).gmtime.strftime("%H:%M")
         @countdown = "#{h_m} remaining"
+      elsif diff > 0
+        @countdown = "Less than a minute remaining!"
       else
         @countdown = "Time has expired!"
       end
