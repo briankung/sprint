@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    problem_number = params[:id]
+    problem_number = params[:number]
     candidate_solution = params[:solution]
     unless problem_number.nil? or candidate_solution.nil?
       check = Problem.check(problem_number, candidate_solution)

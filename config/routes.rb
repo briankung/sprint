@@ -4,7 +4,7 @@ Sprint::Application.routes.draw do
   get '/rules', to: 'pages#rules'
 
   get 'problems', to: 'problems#index', as: 'problems'
-  get 'problem/:id', to: 'problems#show', as: 'problem'
+  get 'problem/:number', to: 'problems#show', as: 'problem'
 
   get 'events', to: 'events#index', as: 'events'
   get 'event/new', to: 'events#new', as: 'new_event'
