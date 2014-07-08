@@ -29,9 +29,9 @@ html lang="en"
                 li= link_to "Problems", problems_path
                 li= link_to "Events", events_path
                 - if session[:event_id]
-                  li= link_to "Rankings", event_path(session[:event_id])
+                  li= link_to "Rankings for #{Event.find(session[:event_id]).name}", event_path(session[:event_id])
                   - if admin_signed_in?
-                    li= link_to "Manage event", manage_event_path(session[:event_id])
+                    li= link_to "Manage #{Event.find(session[:event_id]).name}", manage_event_path(session[:event_id])
 
       - if flash[:notice]
         .notice
