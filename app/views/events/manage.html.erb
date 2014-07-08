@@ -2,6 +2,7 @@
 <% if flash[:edit] == :event %>
   <%= form_for @event, method: :patch do |f| %>
     <%= f.text_field :name, value: @event.name, placeholder: 'Type "delete" to delete entire event', size: 40, style: 'font-size: xx-large; height: 2em;', id: 'edit' %>
+    <%= f.submit %>
   <% end %>
 <% else %>
 <h1><%= link_to @event.name, edit_event_path(@event.id) %></h1>
@@ -14,6 +15,7 @@
 <% if flash[:edit] == :team && flash[:team_id] == team.id %>
   <%= form_for team, method: :patch do |f| %>
     <%= f.text_field :name, value: team.name, placeholder: 'Type "delete" to delete team', size: 30, id: 'edit' %>
+    <%= f.submit %>
   <% end %>
 <% else %>
 <%= link_to team.name, edit_team_path(team.id) %>
@@ -28,6 +30,8 @@
         form_for submission, method: :patch do |f|
           %><%=
           f.text_field :problem, size: 2, value: submission.problem, id: 'edit'
+          %><%=
+          f.submit
           %><%
         end
       else
@@ -40,11 +44,13 @@
   end
 %><%=
   form_for(:submission, url: submissions_path) do |f|
-  %><%=
+    %><%=
     f.hidden_field :team, value: team.id
-  %><%=
+    %><%=
     f.text_field :problem, size: 2
-  %><%
+    %><%=
+    f.submit
+    %><%
   end
 %>]
 </td>
@@ -59,6 +65,8 @@
     f.hidden_field :event_id, value: @event.id
     %><%=
     f.text_field :name, placeholder: 'New team', size: 30
+    %><%=
+    f.submit
     %><%
   end
 %>
