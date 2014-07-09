@@ -3,6 +3,11 @@ class SubmissionsController < ApplicationController
 
   def create
     team = Team.find_by_id(params[:submission][:team])
+    event = Event.find team.event_id
+    if event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(event.admin_id)[:email]}"
+      redirect_to events_path
+    end
     problem = params[:submission][:problem]
     if problem.to_i >= 1
       @submission = Submission.create!({team: team, problem: problem})
@@ -22,6 +27,10 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find params[:id]	
     problem = params[:submission][:problem]
     event = Event.find @submission.team.event_id
+    if event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(event.admin_id)[:email]}"
+      redirect_to events_path
+    end
     if event.finalized
       flash[:notice] = "Event is finalized; no edits permitted."
       redirect_to events_path

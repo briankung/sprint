@@ -2,6 +2,11 @@ class TeamsController < ApplicationController
   before_action :authenticate_admin!
 
   def create
+    event = Event.find session[:event_id]
+    if event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(event.admin_id)[:email]}"
+      redirect_to events_path
+    end
     if team_params[:name] =~ /\S/
       @team = Team.create!(team_params)
     end
@@ -18,6 +23,10 @@ class TeamsController < ApplicationController
   def update
     team = Team.find params[:id]	
     event = Event.find team.event_id
+    if event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(event.admin_id)[:email]}"
+      redirect_to events_path
+    end
     if event.finalized
       flash[:notice] = "Event is finalized; no edits permitted."
       redirect_to events_path

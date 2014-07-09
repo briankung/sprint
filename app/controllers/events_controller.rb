@@ -40,6 +40,9 @@ class EventsController < ApplicationController
     if @event.finalized
       flash[:notice] = "This event has been finalized"
       redirect_to event_path(@event)
+    elsif @event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(@event.admin_id)[:email]}"
+      redirect_to events_path
     else
       flash[:edit] = :event
       redirect_to manage_event_path(@event)
@@ -49,6 +52,11 @@ class EventsController < ApplicationController
   def manage
     authenticate_admin!
     @event = Event.find(params[:id])
+    if @event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(@event.admin_id)[:email]}"
+      redirect_to events_path
+    end
+    
     session[:event_id] = @event.id
     if @event.finalized
       flash[:notice] = "This event has been finalized"
@@ -62,7 +70,7 @@ class EventsController < ApplicationController
   def create
     authenticate_admin!
     if event_params[:name] =~ /\S/
-      @event = Event.create!(event_params)
+      @event = Event.create!({admin_id: current_admin.id}.merge event_params)
       redirect_to manage_event_path(@event)
     else
       redirect_to events_path
@@ -72,6 +80,10 @@ class EventsController < ApplicationController
   def update
     authenticate_admin!
     @event = Event.find(params[:id])
+    if @event.admin_id != current_admin.id
+      flash[:notice] = "This event belongs to #{Admin.find(@event.admin_id)[:email]}"
+      redirect_to events_path
+    end
     if @event.finalized
       redirect_to events_path
     elsif event_params[:name] =~ /^deleted?$/i
