@@ -8,13 +8,22 @@
         %thead
           %tr
             %th= # blank for CSS tr::before counter
-            %th Team name
-            %th Score
+            %th.left Team name
+            %th.right Score
         %tbody
+          - n = 1; prev = 0
           - board[:teams].each do |row|
             %tr
-              %td= "#{row[:name]} #{row[:problems]}"
-              %td<= row[:total]
+              %td.right
+                - if row[:total] != prev
+                  = n
+                - else
+                  = '='
+                - n+=1; prev=row[:total]
+              %td.left
+                = row[:name]
+                != row[:problems].to_s.gsub(/(\d+)/, '<a href="/problem/\1">\1</a>')
+              %td.right= row[:total]
   - if @countdown
     %h1.countdown.col-md-12
       = @countdown
