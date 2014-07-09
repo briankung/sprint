@@ -21,12 +21,18 @@ class SubmissionsController < ApplicationController
   def update
     @submission = Submission.find params[:id]	
     problem = params[:submission][:problem]
-    event_id = @submission.team.event_id
-    if problem == "" || problem == "delete"
+    event = Event.find @submission.team.event_id
+    if event.finalized
+      flash[:notice] = "Event is finalized; no edits permitted."
+      redirect_to events_path
+    elsif problem == "" || problem == "delete"
       @submission.destroy
+      redirect_to manage_event_path event
     elsif problem.to_i >= 1
       @submission.update_attributes! problem: problem
+      redirect_to manage_event_path event
+    else
+      redirect_to manage_event_path event
     end
-    redirect_to manage_event_path event_id
   end
 end

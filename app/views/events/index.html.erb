@@ -7,7 +7,11 @@
 <% @events.each do |event| %>
   <tr><td><%= link_to event.name, event_path(event) %></td>
 <% if admin_signed_in? %>
+<% if event.finalized %>
+<th><i>finalized</i></th>
+<% else %>
 <th><%= link_to "Manage", manage_event_path(event) %></th>
+<% end %>
 <% end %>
 </tr>
 <% end %>

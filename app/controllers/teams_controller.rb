@@ -17,13 +17,17 @@ class TeamsController < ApplicationController
   
   def update
     team = Team.find params[:id]	
-    event_id = team.event_id
-    if team_params[:name] == "delete"
+    event = Event.find team.event_id
+    if event.finalized
+      flash[:notice] = "Event is finalized; no edits permitted."
+      redirect_to events_path
+    elsif team_params[:name] =~ /^deleted?$/i
       team.destroy
+      redirect_to manage_event_path event
     elsif team_params[:name] =~ /\S/
       team.update_attributes!(team_params)
+      redirect_to manage_event_path event
     end
-    redirect_to manage_event_path event_id
   end
   
   private

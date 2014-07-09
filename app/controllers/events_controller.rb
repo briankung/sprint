@@ -72,7 +72,9 @@ class EventsController < ApplicationController
   def update
     authenticate_admin!
     @event = Event.find(params[:id])
-    if event_params[:name] == "delete"
+    if @event.finalized
+      redirect_to events_path
+    elsif event_params[:name] =~ /^deleted?$/i
       name = @event.name
       if @event.destroy
         flash[:notice] = "Event #{name} has been deleted."
@@ -82,6 +84,10 @@ class EventsController < ApplicationController
         flash[:notice] = "Event #{name} WAS NOT DELETED!"
         redirect_to manage_event_path(@event)
       end
+    elsif event_params[:name] =~ /^finalized?$/i
+      @event.update! finalized: true
+      flash[:notice] = "Event #{name} has been finalized."
+      redirect_to events_path
     elsif event_params[:name] =~ /\S/
       @event.update(event_params)
       redirect_to manage_event_path(@event)
