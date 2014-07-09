@@ -6,17 +6,15 @@
 <% end %>
 <% @events.each do |event| %>
   <tr><td><%= link_to event.name, event_path(event) %></td>
-<% if admin_signed_in? %>
-<% if event.finalized %>
-<th><i>finalized</i></th>
-<% else %>
-<% if current_admin.id == event.admin_id %>
-<th><%= link_to "Manage", manage_event_path(event) %></th>
-<% else %>
-<th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>
-<% end %>
-<% end %>
-<% end %>
-</tr>
+  <% if admin_signed_in? %>
+    <% if current_admin.id != event.admin_id %>
+      <th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>
+    <% elsif event.finalized %>
+      <th><i>finalized</i></th>
+    <% else %>
+      <th><%= link_to "Manage", manage_event_path(event) %></th>
+    <% end %>
+  <% end %>
+  </tr>
 <% end %>
 </table>
