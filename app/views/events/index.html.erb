@@ -1,10 +1,14 @@
 <h1>Project Euler Sprints</h1>
 <p><strong>Sign up and RSVP at <a href="http://www.meetup.com/Project-Euler-Sprint">http://www.meetup.com/Project-Euler-Sprint</a></strong></p>
-<ul>
+<table>
 <% if admin_signed_in? %>
-  <li><%= link_to '<Admin: New Event>', new_event_path %></li>
+  <tr><th><%= link_to '<Admin: New Event>', new_event_path %></th></tr>
 <% end %>
 <% @events.each do |event| %>
-  <li><%= link_to event.name, event_path(event) %></li>
+  <tr><td><%= link_to event.name, event_path(event) %></td>
+<% if admin_signed_in? %>
+<th><%= link_to "Manage", manage_event_path(event) %></th>
 <% end %>
-</ul>
+</tr>
+<% end %>
+</table>
