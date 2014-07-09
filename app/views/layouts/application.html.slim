@@ -35,8 +35,11 @@ html lang="en"
       - if flash[:alert]
         .alert
           = "ALERT: #{flash[:alert]}"
-      .container
-	    	= yield
+      -# Do not apply .container margins to events#show
+      - if params[:controller] == 'events' && params[:action] == 'show'
+        = yield
+      - else
+        .container= yield
 
     footer
       .container
