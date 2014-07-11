@@ -1,7 +1,7 @@
 <div class="event">
 <% if flash[:edit] == :event %>
   <%= form_for @event, method: :patch do |f| %>
-    <%= f.text_field :name, value: @event.name, placeholder: 'Type "delete" to delete entire event', size: 40, style: 'font-size: xx-large; height: 2em;', id: 'edit' %>
+    <%= f.text_field :name, value: @event.name, placeholder: 'Submit the word "delete" to delete event', size: 40, style: 'font-size: xx-large; height: 2em;', id: 'edit' %>
     <%= f.submit %>
   <% end %>
 <% else %>
@@ -14,7 +14,7 @@
 <td>
 <% if flash[:edit] == :team && flash[:team_id] == team.id %>
   <%= form_for team, method: :patch do |f| %>
-    <%= f.text_field :name, value: team.name, placeholder: 'Type "delete" to delete team', size: 30, id: 'edit' %>
+    <%= f.text_field :name, value: team.name, placeholder: 'Submit the word "delete" to delete team', size: 40, id: 'edit' %>
     <%= f.submit %>
   <% end %>
 <% else %>
@@ -64,7 +64,7 @@
     %><%=
     f.hidden_field :event_id, value: @event.id
     %><%=
-    f.text_field :name, placeholder: 'New team', size: 30
+    f.text_field :name, placeholder: 'New team', size: 40
     %><%=
     f.submit
     %><%
@@ -75,9 +75,18 @@
 </tr>
 </tfoot>
 </table>
-<p>
-<i>Notes. Each field belongs to its own form. Press 'enter' to submit it. Click on a text element (event name, team name, problem number) to edit it. Submitting the string "delete" will delete the event, team or submission. Submitting an empty string will delete a submission but not the event or team. Submitting the string "finalize" in the event field will protect the event from further edits.</i>
-</p>
+<h4>Instructions</h4>
+<p>Each field belongs to its own form. Press [enter] to submit it.</p>
+<dl>
+<dt>Add a problem solution</dt>
+<dd>Each team has a list of solved problems and a field for a new submission. Put a number in the field and press [enter]</dd>
+<dt>Edit event name, team name, or the problem number of a submission</dt>
+<dd>Click on a text element to make it editable, and press [enter] to submit.</dd>
+<dt>Delete event, team or submission</dt>
+<dd>Submit the word "delete" in the edit field for the event, team or submision. For submissions only, submitting the empty string will also delete the submission.</dd>
+<dt>Finalize event<dd>
+<dd>Finalized events are protected from any future edits. They cannot be unfinalized from the web site. To finalize an event, submit the word "finalize" in the edit field for the event.</dd>
+</dl>
 <% if flash[:edit] %>
 <script>
 document.getElementById('edit').select();
