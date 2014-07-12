@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  belongs_to :chapter
   has_many :teams, :dependent => :destroy
   has_many :submissions, :through => :teams
 
