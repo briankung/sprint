@@ -6,6 +6,9 @@ Sprint::Application.routes.draw do
   get 'problems', to: 'problems#index', as: 'problems'
   get 'problem/:number', to: 'problems#show', as: 'problem'
 
+  get 'chapters', to: 'chapters#index', as: 'chapters'
+  get 'chapter/:id', to: 'chapters#show', as: 'chapter'
+
   get 'events', to: 'events#index', as: 'events'
   get 'event/new', to: 'events#new', as: 'new_event'
   get 'event/:id', to: 'events#show', as: 'event'
