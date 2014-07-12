@@ -31,7 +31,12 @@ class EventsController < ApplicationController
   def new
     authenticate_admin!
     @chapter = Chapter.find(params[:chapter_id])
-    session[:event_id] = nil
+    if AdminChapter.authorized?(current_admin.id, @chapter.id)
+      session[:event_id] = nil
+    else
+      flash[:notice] = "Not authorized to add events to the #{Chapter.find(params[:chapter_id]).location} chapter"
+      redirect_to chapter_path(@chapter)
+    end
   end
 
   def edit
@@ -69,7 +74,10 @@ class EventsController < ApplicationController
 
   def create
     authenticate_admin!
-    if event_params[:name] =~ /\S/
+    if AdminChapter.authorized?(current_admin.id, params[:chapter_id]) == false
+      flash[:notice] = "Not authorized to add events to the #{Chapter.find(params[:chapter_id]).location} chapter"
+      redirect_to chapters_path
+    elsif event_params[:name] =~ /\S/
       @event = Event.create!({admin_id: current_admin.id, chapter_id: params[:chapter_id]}.merge event_params)
       redirect_to manage_event_path(@event)
     else

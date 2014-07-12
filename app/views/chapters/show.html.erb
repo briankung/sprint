@@ -1,7 +1,7 @@
 <h1><%= @chapter.location %></h1>
 <p><strong>Sign up and RSVP to future events at <%= link_to @chapter.url, @chapter.url %></strong></p>
 <table>
-<% if admin_signed_in? %>
+<% if admin_signed_in? && AdminChapter.authorized?(current_admin.id, @chapter.id) %>
   <tr><th><%= link_to '<Admin: New Event>', new_event_path(@chapter.id) %></th></tr>
 <% end %>
 <% @events.each do |event| %>
