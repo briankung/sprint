@@ -1,20 +1,19 @@
 <h1>Project Euler Sprints</h1>
 <p><strong>Sign up and RSVP to future events at <a href="http://www.meetup.com/Project-Euler-Sprint">http://www.meetup.com/Project-Euler-Sprint</a></strong></p>
 <table>
-<% if admin_signed_in? %>
-  <tr><th><%= link_to '<Admin: New Event>', new_event_path %></th></tr>
-<% end %>
 <% @events.each do |event| %>
-  <tr><td><%= link_to event.name, event_path(event) %></td>
-  <% if admin_signed_in? %>
-    <% if current_admin.id != event.admin_id %>
-      <th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>
-    <% elsif event.finalized %>
-      <th><i>finalized</i></th>
-    <% else %>
-      <th><%= link_to "Manage", manage_event_path(event) %></th>
+  <tr>
+    <td><%= Chapter.find_by_id(event.chapter_id).location if event.chapter_id %></td>
+    <td><%= link_to event.name, event_path(event) %></td>
+    <% if admin_signed_in? %>
+      <% if current_admin.id != event.admin_id %>
+        <th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>
+      <% elsif event.finalized %>
+        <th><i>finalized</i></th>
+      <% else %>
+        <th><%= link_to "Manage", manage_event_path(event) %></th>
+      <% end %>
     <% end %>
-  <% end %>
   </tr>
 <% end %>
 </table>
