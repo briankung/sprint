@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
   def new
     authenticate_admin!
-    @event = Event.new
+    @chapter = Chapter.find(params[:chapter_id])
     session[:event_id] = nil
   end
 
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
   def create
     authenticate_admin!
     if event_params[:name] =~ /\S/
-      @event = Event.create!({admin_id: current_admin.id}.merge event_params)
+      @event = Event.create!({admin_id: current_admin.id, chapter_id: params[:chapter_id]}.merge event_params)
       redirect_to manage_event_path(@event)
     else
       redirect_to events_path

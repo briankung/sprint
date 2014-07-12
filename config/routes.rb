@@ -10,12 +10,12 @@ Sprint::Application.routes.draw do
   get 'chapter/:id', to: 'chapters#show', as: 'chapter'
 
   get 'events', to: 'events#index', as: 'events'
-  get 'chapter/:chapter_id/events/new', to: 'events#new', as: 'new_event'
   get 'event/:id', to: 'events#show', as: 'event'
   get 'event/:id/edit', to: 'events#edit', :as => 'edit_event'
   get 'event/:id/manage', to: 'events#manage', :as => 'manage_event'
   patch 'event/:id', to: 'events#update'
-  post 'events', to: 'events#create'
+  get 'chapter/:chapter_id/events/new', to: 'events#new', as: 'new_event'
+  post 'chapter/:chapter_id/events', to: 'events#create'
 
   get 'team/:id/edit', to: 'teams#edit', as: 'edit_team'
   patch 'team/:id', to: 'teams#update', as: 'team'
