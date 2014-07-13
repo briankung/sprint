@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617090016) do
+ActiveRecord::Schema.define(version: 20140712205548) do
+
+  create_table "admin_chapters", force: true do |t|
+    t.integer  "admin_id"
+    t.integer  "chapter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -31,8 +38,25 @@ ActiveRecord::Schema.define(version: 20140617090016) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
-  create_table "problems", force: true do |t|
+  create_table "chapters", force: true do |t|
+    t.string   "location"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.boolean  "finalized"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "admin_id"
+    t.integer  "chapter_id"
+  end
+
+  create_table "problems", id: false, force: true do |t|
     t.integer "number"
+    t.text    "name"
     t.text    "solution"
   end
 
@@ -45,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140617090016) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
 end

@@ -8,9 +8,9 @@ describe 'Pages' do
     expect(page).to have_css('footer')
   end
 
-  it 'has links to Rules and Meetups' do
+  it 'has links to Rules and Chapters' do
     click_link 'Rules'
-    click_link 'Meetups'
+    click_link 'Chapters'
   end
 
   describe 'Rules' do

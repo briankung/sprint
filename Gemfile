@@ -19,6 +19,8 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rake'

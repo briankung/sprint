@@ -1,7 +1,9 @@
 .rankings_container {
+/*
   position: absolute;
   left: 10px;
   right: 10px;
+*/
   text-align: center;
 }
 
@@ -13,7 +15,6 @@
 }
 
 .rankings table{
-  counter-reset: tr;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -25,8 +26,10 @@
   padding: 0 1em 0 0;
 }
 
-.rankings tbody tr::before {
-  counter-increment: tr;
-  content: counter(tr) ". ";
-  display: table-cell;
+.rankings .left {
+  text-align: left;
+}
+
+.rankings .right {
+  text-align: right;
 }
