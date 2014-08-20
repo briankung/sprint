@@ -1,5 +1,5 @@
 language: ruby
 rvm:
-  - 2.1.1
+  - 2.1.2
 bundler_args: --without production development
 script: bundle exec rspec spec --color --format documentation
