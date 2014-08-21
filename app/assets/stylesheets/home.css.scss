@@ -8,9 +8,12 @@
 
 h1.banner-text {
 	font-family: 'Yellowtail', cursive;
+	font-size: 5em;
+	text-decoration: underline;
 }
 
 h2.banner-text {
+	margin: 1.5em 0 1em 0;
 	font-family: 'Economica', sans-serif;
 }
 
@@ -19,4 +22,17 @@ h2.banner-text {
 	-webkit-border-radius: 99px;
 	-moz-border-radius: 99px;
 	border-radius: 99px;
+}
+
+.hero-copy {
+	text-align: justify;
+}
+
+button {
+	margin: 1.5em 0;
+	width: 100%;
+	height: 3.5em;
+	-webkit-border-radius: 99px !important;
+	-moz-border-radius: 99px !important;
+	border-radius: 99px !important;
 }
