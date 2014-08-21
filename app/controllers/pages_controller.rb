@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   end
   def meetups
   end
-  def fivek
+  def conduct
   end
 end
