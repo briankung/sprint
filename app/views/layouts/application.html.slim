@@ -12,7 +12,7 @@ html lang="en"
     = csrf_meta_tags
   body
     .container
-      .col-md-8.col-md-offset-2
+      .col-md-10.col-md-offset-1
         header
           nav.navbar.navbar-default role="navigation" 
             / Brand and toggle get grouped for better mobile display
@@ -30,7 +30,14 @@ html lang="en"
                 li= link_to "Problems", problems_path
                 li= link_to "Chapters", chapters_path
                 li= link_to "Code of Conduct", conduct_path
-
+              ul.nav.navbar-nav.navbar-right
+                - if admin_signed_in?
+                  li= link_to "Chapters", chapters_path
+                  li= link_to "Events", events_path
+                  li= link_to "Sign out", destroy_admin_session_path, {method: :delete, data: {confirm: 'Are you sure you want to sign out?'}}
+                  li= link_to "Account settings", edit_admin_registration_path
+                - else
+                  li= link_to "Admin sign in", new_admin_session_path
           - if flash[:notice]
             .notice
               = "NOTICE: #{flash[:notice]}"
