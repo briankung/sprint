@@ -15,3 +15,17 @@
 @import "footer";
 @import "bootstrap";
 @import "bootstrap/theme";
+@import url(http://fonts.googleapis.com/css?family=Yellowtail|Economica);
+
+.container {
+	margin-bottom: 100px;
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#999;
+}

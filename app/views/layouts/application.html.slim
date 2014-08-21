@@ -11,68 +11,36 @@ html lang="en"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
-    #wrap
-      header
-        nav.navbar.navbar-default role="navigation" 
-          .container
+    .container
+      .col-md-8.col-md-offset-2
+        header
+          nav.navbar.navbar-default role="navigation" 
             / Brand and toggle get grouped for better mobile display
             .navbar-header
               button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
                 span.sr-only Toggle navigation
                 - 3.times do 
-                  span.icon-bar
+                  .icon-bar
               = link_to 'The Project Euler Sprint', root_url, class: 'navbar-brand'
             / Collect the nav links, forms, and other content for toggling
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
               ul.nav.navbar-nav
-                li= link_to "Rules", '/rules'
+                li= link_to "Rules", rules_path
                 li= link_to "Problems", problems_path
                 li= link_to "Chapters", chapters_path
                 li= link_to "Code of Conduct", conduct_path
 
-      - if flash[:notice]
-        .notice
-          = "NOTICE: #{flash[:notice]}"
-      - if flash[:alert]
-        .alert
-          = "ALERT: #{flash[:alert]}"
-      -# Do not apply .container margins to events#show
-      - if params[:controller] == 'events' && params[:action] == 'show'
-        = yield
-      - else
-        .container= yield
+          - if flash[:notice]
+            .notice
+              = "NOTICE: #{flash[:notice]}"
+          - if flash[:alert]
+            .alert
+              = "ALERT: #{flash[:alert]}"
+          -# Do not apply .container margins to events#show
+        - if params[:controller] == 'events' && params[:action] == 'show'
+            = yield
+        - else
+            = yield
 
-    footer
-      .container
-        .teaser.col-md-4
-          p 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...
-        .col-md-4
-          - if admin_signed_in?
-            div
-              = "Signed in as #{current_admin.email}"
-            div
-              = link_to "Sign out", destroy_admin_session_path, {method: :delete, data: {confirm: 'Are you sure you want to sign out?'}}
-            div
-              = link_to "Account settings", edit_admin_registration_path
-          - else
-            = link_to "Admin sign in", new_admin_session_path
-        .license.col-md-4
-          a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US" rel="license" 
-            img alt=("Creative Commons License") src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" style="border-width:0" /
-          br/
-          span property="dc:title" rel="dc:type"  The Project Euler Sprint
-          | by
-          span property="cc:attributionName"  Brian Kung
-          | is licensed under a
-          a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US" rel="license"  Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
-          | Based on a work at
-          a href="#{root_url}" rel="dc:source"  #{root_url}
-    - unless Rails.env.development?
-      javascript:
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-12848925-5', 'auto');
-        ga('send', 'pageview');
+    = render 'application/footer'
+    = render 'application/google_analytics'
