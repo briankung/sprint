@@ -1,15 +1,16 @@
 <h1>Chapters</h1>
 <table>
-<tr>
-  <th>Chapter</th>
-  <th>RSVP at</th>
-  <th>Scoreboard</th>
-</tr>
-<% @chapters.each do |chapter| %>
-<tr>
-  <th><%= chapter.location %></th>
-  <td><%= link_to chapter.url, chapter.url %></td>
-  <td><%= link_to "Scoreboard", chapter_path(chapter.id) %></td>
-</tr>
-<% end %>
+  <tr>
+    <th>Chapter</th>
+    <th>RSVP at</th>
+    <th>Scoreboard</th>
+  </tr>
+  <% @chapters.each do |chapter| %>
+    <tr>
+      <th><%= chapter.location %></th>
+      <td><%= link_to chapter.url, chapter.url %></td>
+      <td><%= link_to "Scoreboard", chapter_path(chapter.id) %></td>
+    </tr>
+  <% end %>
 </table>
+<%# link_to "Start a new Chapter", new_chapter_path %>
