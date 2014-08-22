@@ -1,19 +1,19 @@
-<h1>Solved and unsolved problems</h1>
+<h1>Project Euler Problems</h1>
 <%= render partial: "attribution" %>
 <table>
-<% @solved.each do |problem, row| %>
-<tr>
-<th style="width: 20em;">
-<%= link_to "#{problem}. #{row[:name]}", problem_path(problem) %>
-</th>
-<td>
-<% row[:solvers][0..-2].each do |solver| %>
-<%= solver['team'] %> @ <%= link_to solver['event'], event_path(solver['event_id']) %>,
-<% end %>
-<% unless row[:solvers].empty? %>
-<%= row[:solvers][-1]['team'] %> @ <%= link_to row[:solvers][-1]['event'], event_path(row[:solvers][-1]['event_id']) %>
-<% end %>
-</td>
-</tr>
-<% end %>
+	<% @solved.each do |problem, row| %>
+		<tr>
+			<th style="width: 20em;">
+				<%= link_to "#{problem}. #{row[:name]}", problem_path(problem) %>
+			</th>
+			<td>
+				<% row[:solvers][0..-2].each do |solver| %>
+					<%= solver['team'] %> @ <%= link_to solver['event'], event_path(solver['event_id']) %>,
+				<% end %>
+				<% unless row[:solvers].empty? %>
+					<%= row[:solvers][-1]['team'] %> @ <%= link_to row[:solvers][-1]['event'], event_path(row[:solvers][-1]['event_id']) %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
 </table>
