@@ -13,9 +13,9 @@ Sprint::Application.routes.draw do
   end
 
   get 'events' => 'events#index'
-  resources 'events', only: [:edit, :show, :update], path: 'event'# do
-  #   member { get 'manage' => 'events#manage' }
-  # end
+  resources 'events', only: [:edit, :show, :update], path: 'event' do
+    member { get 'manage' => 'events#manage' }
+  end
 
   resources :teams, :submissions, only: [:edit, :update, :create]
 
