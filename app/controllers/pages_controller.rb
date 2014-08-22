@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
   end
-  def rules
+  def details
   end
   def meetups
   end

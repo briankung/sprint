@@ -26,7 +26,7 @@ html lang="en"
               ul.nav.navbar-nav
                 li
                   = link_to(image_tag('/logo.png', class: 'logo'), root_url)
-                li= link_to "Rules", rules_path
+                li= link_to "Details", details_path
                 li= link_to "Code of Conduct", conduct_path
                 li= link_to "Problems", problems_path
                 li= link_to "Chapters", chapters_path
@@ -44,10 +44,11 @@ html lang="en"
             .alert
               = "ALERT: #{flash[:alert]}"
           -# Do not apply .container margins to events#show
-        - if params[:controller] == 'events' && params[:action] == 'show'
+        - unless current_page?(root_url)
+          .col-md-10.col-md-offset-1
             = yield
         - else
-            = yield
+          = yield
 
     = render 'application/footer'
     = render 'application/google_analytics'

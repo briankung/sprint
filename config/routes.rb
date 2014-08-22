@@ -1,7 +1,7 @@
 Sprint::Application.routes.draw do
   root to: 'pages#home'
 
-  get '/rules' => 'pages#rules'
+  get '/details' => 'pages#details'
   get '/conduct' => 'pages#conduct'
 
   get 'problems' => 'problems#index', as: 'problems'
