@@ -29,10 +29,10 @@ html lang="en"
                 li= link_to "Rules", rules_path
                 li= link_to "Problems", problems_path
                 li= link_to "Chapters", chapters_path
+                li= link_to "Events", events_path
                 li= link_to "Code of Conduct", conduct_path
               ul.nav.navbar-nav.navbar-right
                 - if admin_signed_in?
-                  li= link_to "Events", events_path
                   li= link_to "Sign out", destroy_admin_session_path, {method: :delete, data: {confirm: 'Are you sure you want to sign out?'}}
                   li= link_to "Account settings", edit_admin_registration_path
                 - else
