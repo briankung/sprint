@@ -43,16 +43,7 @@ html lang="en"
           - if flash[:alert]
             .alert
               = "ALERT: #{flash[:alert]}"
-          -# Do not apply .container margins to events#show
-        - case
-        - when current_page?(root_path)
-          .col-md-10.col-md-offset-1
-            = yield
-        - when @event && current_page?(event_path(@event))
-          .col-md-12
-            = yield
-        - else
-          = yield
+        = yield
 
     = render 'application/footer'
     = render 'application/google_analytics'
