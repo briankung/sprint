@@ -6,13 +6,13 @@
   <tr>
     <th>Chapter</th>
     <th>RSVP at</th>
-    <th>Scoreboard</th>
+    <th>Past Events</th>
   </tr>
   <% @chapters.each do |chapter| %>
     <tr>
       <th><%= chapter.location %></th>
       <td><%= link_to chapter.url, chapter.url %></td>
-      <td><%= link_to "Scoreboard", chapter_path(chapter.id) %></td>
+      <td><%= link_to "#{chapter.location} Events", chapter_path(chapter.id) %></td>
     </tr>
   <% end %>
 </table>
