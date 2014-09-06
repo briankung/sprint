@@ -4,7 +4,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= Chapter.find_by_id(event.chapter_id).location if event.chapter_id %></td>
-    <td><%= link_to event.name, event_path(event) %></td>
+    <td><%= link_to event.created_at.strftime('%D'), event_path(event) %></td>
     <% if admin_signed_in? %>
       <% if current_admin.id != event.admin_id %>
         <th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>

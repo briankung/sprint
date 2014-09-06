@@ -2,10 +2,10 @@
 <p><strong>Sign up and RSVP to future events at <%= link_to @chapter.url, @chapter.url %></strong></p>
 <table>
 <% if admin_signed_in? && AdminChapter.authorized?(current_admin.id, @chapter.id) %>
-  <tr><th><%= link_to '<Admin: New Event>', new_chapter_event_path(@chapter.id) %></th></tr>
+  <tr><th><%= link_to 'New Event', new_chapter_event_path(@chapter.id) %></th></tr>
 <% end %>
 <% @events.each do |event| %>
-  <tr><td><%= link_to event.name, event_path(event) %></td>
+  <tr><td><%= link_to event.created_at.strftime('%D'), event_path(event) %></td>
   <% if admin_signed_in? %>
     <% if current_admin.id != event.admin_id %>
       <th><i>belongs to <%= Admin.find(event.admin_id)[:email] %></i></th>
