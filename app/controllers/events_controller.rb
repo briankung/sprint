@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all.order(:created_at, :asc)
+    @events = Event.all.order(created_at: :asc)
   end
 
   def show
