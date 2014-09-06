@@ -5,6 +5,6 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
-    @events = Event.where(chapter_id: params[:id]).order(id: :desc)
+    @events = Event.where(chapter_id: params[:id]).order(created_at: :asc)
   end
 end
