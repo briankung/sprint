@@ -1,7 +1,7 @@
 <footer>
   <div class="teaser col-md-4 col-md-offset-2">
   	<% fibs = Hash.new{ |h,k| h[k] = k < 2 ? k : h[k-1] + h[k-2] } %>
-    <p><%= (1..12).map{|i|fibs[i]}.join(', ') %>...</p>
+    <p><%= (1..rand(20)).map{|i|fibs[i]}.join(', ') %>...</p>
   </div>
 
   <div class="license col-md-4">
