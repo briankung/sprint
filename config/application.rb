@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module Sprint
   class Application < Rails::Application
-    Slim::Engine.set_default_options enable_engines: [:markdown, :javascript]
+    Slim::Engine.set_options enable_engines: [:markdown, :javascript]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
