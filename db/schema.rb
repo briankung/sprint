@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20140712205548) do
 
-  create_table "admin_chapters", force: true do |t|
+  create_table "admin_chapters", force: :cascade do |t|
     t.integer  "admin_id"
     t.integer  "chapter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "admins", force: true do |t|
+  create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20140712205548) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
-  create_table "chapters", force: true do |t|
+  create_table "chapters", force: :cascade do |t|
     t.string   "location"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "name"
     t.boolean  "finalized"
     t.datetime "created_at"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140712205548) do
     t.integer  "chapter_id"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "author"
     t.string   "title"
     t.text     "content"
@@ -62,18 +62,18 @@ ActiveRecord::Schema.define(version: 20140712205548) do
     t.datetime "updated_at"
   end
 
-  create_table "problems", id: false, force: true do |t|
+  create_table "problems", id: false, force: :cascade do |t|
     t.integer "number"
     t.text    "name"
     t.text    "solution"
   end
 
-  create_table "submissions", force: true do |t|
+  create_table "submissions", force: :cascade do |t|
     t.integer "team_id"
     t.integer "problem"
   end
 
-  create_table "teams", force: true do |t|
+  create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
