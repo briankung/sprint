@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140712205548) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_chapters", force: :cascade do |t|
     t.integer  "admin_id"
     t.integer  "chapter_id"
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 20140712205548) do
     t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "chapters", force: :cascade do |t|
     t.string   "location"

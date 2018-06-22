@@ -3,7 +3,7 @@ ruby '2.5.1'
 #ruby-gemset=sprint
 
 gem 'rails', '~> 4.1'
-gem 'pg'
+gem 'pg', '~> 0.21'
 
 group :development do
   gem 'spring-commands-rspec'
