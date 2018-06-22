@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.5.1'
 #ruby-gemset=sprint
 
 gem 'rails', '~> 4.1'
