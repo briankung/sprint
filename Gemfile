@@ -3,10 +3,7 @@ ruby '2.5.1'
 #ruby-gemset=sprint
 
 gem 'rails', '~> 4.1'
-
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'pg'
 
 group :development do
   gem 'spring-commands-rspec'
@@ -30,7 +27,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'unicorn'
 end
